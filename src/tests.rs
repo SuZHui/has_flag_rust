@@ -1,12 +1,12 @@
 mod tests {
-    fn c_iter(args: Vec<&str>) -> Vec<String> {
+    fn _c_iter(args: Vec<&str>) -> Vec<String> {
         args.into_iter().map(|a| a.to_string()).collect()
     }
     #[test]
     fn default_prefix() {
         assert!(crate::has_flag(
             "unicorn",
-            c_iter(vec!["--foo", "--unicorn", "--bar"])
+            _c_iter(vec!["--foo", "--unicorn", "--bar"])
         ));
     }
 
@@ -14,7 +14,7 @@ mod tests {
     fn optional_prefix() {
         assert!(crate::has_flag(
             "--unicorn",
-            c_iter(vec!["--foo", "--unicorn", "--bar"])
+            _c_iter(vec!["--foo", "--unicorn", "--bar"])
         ))
     }
 
@@ -22,7 +22,7 @@ mod tests {
     fn contain_equal_sign() {
       assert!(crate::has_flag(
         "unicorn=rainbow",
-        c_iter(vec!["--foo", "--unicorn=rainbow", "--bar"])
+        _c_iter(vec!["--foo", "--unicorn=rainbow", "--bar"])
       ))
     }
 
@@ -30,7 +30,7 @@ mod tests {
     fn contain_empty() {
       assert!(crate::has_flag(
         "unicorn",
-        c_iter(vec!["--unicorn", "--", "--foo"])
+        _c_iter(vec!["--unicorn", "--", "--foo"])
       ))
     }
 
@@ -38,7 +38,7 @@ mod tests {
     fn don_not_match_flags_after_terminator() {
       assert!(!crate::has_flag(
         "unicorn",
-        c_iter(vec!["--foo", "--", "--unicorn"])
+        _c_iter(vec!["--foo", "--", "--unicorn"])
       ))
     }
 
@@ -46,7 +46,7 @@ mod tests {
     fn not_contain() {
       assert!(!crate::has_flag(
         "unicorn",
-        c_iter(vec!["--foo"])
+        _c_iter(vec!["--foo"])
       ))
     }
 
@@ -54,7 +54,7 @@ mod tests {
     fn default_short_prefix() {
       assert!(crate::has_flag(
         "-u",
-        c_iter(vec!["-f", "-u", "-b"])
+        _c_iter(vec!["-f", "-u", "-b"])
       ))
     }
 
@@ -62,7 +62,7 @@ mod tests {
     fn short_contain_empty() {
       assert!(crate::has_flag(
         "-u",
-        c_iter(vec!["-u", "--", "-f"])
+        _c_iter(vec!["-u", "--", "-f"])
       ))
     }
 
@@ -70,7 +70,7 @@ mod tests {
     fn short_without_prefix() {
       assert!(crate::has_flag(
         "u",
-        c_iter(vec!["-f", "-u", "-b"])
+        _c_iter(vec!["-f", "-u", "-b"])
       ))
     }
 
@@ -78,7 +78,7 @@ mod tests {
     fn short_and_empty () {
       assert!(crate::has_flag(
         "u",
-        c_iter(vec!["-u", "--", "-f"])
+        _c_iter(vec!["-u", "--", "-f"])
       ))
     }
 
@@ -86,7 +86,7 @@ mod tests {
     fn short_in_last() {
       assert!(!crate::has_flag(
         "f",
-        c_iter(vec!["-u", "--", "-f"])
+        _c_iter(vec!["-u", "--", "-f"])
       ))
     }
 }

@@ -5,30 +5,31 @@
 /// ```bash
 /// ls -f --unicorn --foo=bar -- --rainbow
 /// ```
-///
+///#[test]
+///#[ignore]
 /// ```edition2018
 /// use has_flag::has_flag;
-/// use env::args;
+/// use std::env;
 /// 
-/// has_flag("unicorn", args().collect());
+/// has_flag("unicorn", env::args().into_iter().collect());
 /// //=> true
 /// 
-/// has_flag ("--unicorn", args().collect());
+/// has_flag ("--unicorn", env::args().into_iter().collect());
 /// //=> true
 /// 
-/// has_flag("f", args().collect());
+/// has_flag("f", env::args().into_iter().collect());
 /// //=> true
 /// 
-/// has_flag("-f", args().collect());
+/// has_flag("-f", env::args().into_iter().collect());
 /// //=> true
 /// 
-/// has_flag("foo=bar", env::args().collect());
+/// has_flag("foo=bar", env::args().into_iter().collect());
 /// //=> true
 /// 
-/// has_flag("foo", env::args().collect());
+/// has_flag("foo", env::args().into_iter().collect());
 /// //=> false
 /// 
-/// has_flag("rainbow", env::args().collect());
+/// has_flag("rainbow", env::args().into_iter().collect());
 /// //=> false
 /// ```
 pub fn has_flag(flag: &str, args: Vec<String>) -> bool {

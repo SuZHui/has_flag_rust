@@ -1,12 +1,12 @@
 [package]
 name = "has_flag"
 description = "Check if args has a specific flag"
-version = "0.1.0"
+version = "0.1.1"
 authors = ["suzh <20077871+SuZHui@users.noreply.github.com>"]
 edition = "2018"
 license = "MIT"
 homepage = "https://github.com/SuZHui/has_flag_rust"
-documentation = "https://github.com/SuZHui/has_flag_rust"
+documentation = "https://docs.rs/has_flag/0.1.1/has_flag"
 repository = "https://github.com/SuZHui/has_flag_rust"
 
 categories = ["command-line-utilities"]
